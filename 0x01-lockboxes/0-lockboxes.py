@@ -11,13 +11,12 @@ def canUnlockAll(boxes):
     for j in range(len(boxes)):
         if (flags[j] == 1):
             for k in range(len(boxes[j])):
-                if(flags[boxes[j][k]] == 0):
+                if((boxes[j][k] < size) and flags[boxes[j][k]] == 0):
                     flags[boxes[j][k]] = 1
                     if(j > boxes[j][k]):
                         for m in range(len(boxes[boxes[j][k]])):
-                            if(flags[boxes[boxes[j][k]][m]] == 0):
+                            if((boxes[boxes[j][k]][m] < size) and flags[boxes[boxes[j][k]][m]] == 0):
                                 flags[boxes[boxes[j][k]][m]] = 1
-
     if (0 in flags):
         return False
     return True
