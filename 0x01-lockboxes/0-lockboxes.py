@@ -3,7 +3,9 @@
 
 
 def canUnlockAll(boxes):
-    """function that returns True if all boxes can be unlocked, false otherwie"""
+    """function that returns True if all boxes can be unlocked,
+    false otherwie.
+    """
     size = len(boxes)
     flags = [1]
     for i in range(1, size, 1):
@@ -15,8 +17,9 @@ def canUnlockAll(boxes):
                     flags[boxes[j][k]] = 1
                     if(j > boxes[j][k]):
                         for m in range(len(boxes[boxes[j][k]])):
-                            if((boxes[boxes[j][k]][m] < size) and flags[boxes[boxes[j][k]][m]] == 0):
-                                flags[boxes[boxes[j][k]][m]] = 1
+                            if((boxes[boxes[j][k]][m] < size)):
+                                if(flags[boxes[boxes[j][k]][m]] == 0):
+                                    flags[boxes[boxes[j][k]][m]] = 1
     if (0 in flags):
         return False
     return True
