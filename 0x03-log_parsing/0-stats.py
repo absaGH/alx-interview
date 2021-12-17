@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
     def printstat():
         '''function to printout the stats from the log'''
-        print('File Size: ' + str(flsz))
+        print('File size: ' + str(flsz))
         frq = Counter(lst)
         frq = sorted(frq.items())
         frq = dict(frq)
@@ -37,3 +37,4 @@ if __name__ == "__main__":
             printstat()
     except KeyboardInterrupt:
         printstat()
+        raise
