@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
+'''Python script to parse log and display stat'''
 import fileinput
 import sys
 import re
@@ -11,11 +12,12 @@ frq = {}
 
 
 def printstat():
+    '''function to printout the stats from the log'''
     print('File Size: ' + str(flsz))
     frq = Counter(lst)
     frq = sorted(frq.items())
     frq = dict(frq)
-    #print(frq)
+    # print(frq)
     for item in frq:
         if int(item) in [200, 301, 400, 401, 403, 404, 405, 500]:
             print(item + ': ' + str(frq[item]))
