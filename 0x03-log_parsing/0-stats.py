@@ -33,6 +33,7 @@ if __name__ == "__main__":
                 frq = Counter(lst)
                 if (count % 10 == 0):
                     printstat()
+        if count % 10 != 0:
+            printstat()
     except KeyboardInterrupt:
         printstat()
-    printstat()
