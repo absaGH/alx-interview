@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import sys
 """A module to solve minimum operations challenge"""
 
 
@@ -10,7 +9,7 @@ def minOperations(n):
     ops = 0
     counter = 1
 
-    if n <= 1 or sys.getsizeof(n) > 28:
+    if n <= 1:
         return 0
 
     for i in range(n):
@@ -24,4 +23,7 @@ def minOperations(n):
                 paste = paste + 1
                 counter += copied
         ops = copy + paste
+        n /= counter
+        if (int(n) == 0):
+            break
     return ops
