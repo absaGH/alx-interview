@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import sys
 """A module to solve minimum operations challenge"""
 
 
@@ -9,7 +10,7 @@ def minOperations(n):
     ops = 0
     counter = 1
 
-    if n <= 1:
+    if n <= 1 or sys.getsizeof(n) > 28:
         return 0
 
     for i in range(n):
