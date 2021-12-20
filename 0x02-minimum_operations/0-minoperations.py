@@ -12,7 +12,7 @@ def minOperations(n):
     if n <= 1:
         return 0
 
-    for i in range(n):
+    while n != counter:
         if counter < n:
             if n % counter == 0:
                 copied = counter
@@ -23,7 +23,4 @@ def minOperations(n):
                 paste = paste + 1
                 counter += copied
         ops = copy + paste
-        n /= counter
-        if (int(n) == 0):
-            break
     return ops
