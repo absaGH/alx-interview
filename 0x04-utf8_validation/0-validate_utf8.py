@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 '''
-Module to validate UTF-8
+Module to validate UTF8
 '''
 
 
 def validUTF8(data):
     '''
-    Implementation of UTF-8 validation algorithm
+    Implementation of UTF8 validation algorithm
     '''
     size = len(data)
     counter = 0
