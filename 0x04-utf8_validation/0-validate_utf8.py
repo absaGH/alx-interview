@@ -53,3 +53,4 @@ def validUTF8(data):
             break
 
     return flag
+
