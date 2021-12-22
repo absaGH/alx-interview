@@ -35,7 +35,7 @@ def validUTF8(data):
                     while m < counter - 1 and k < size:
                         s = bin(data[k])
                         s = s.replace('0b', '')
-                        if s[0] == '1' and s[1] == '0':
+                        if len(s) == 8 and s[0] == '1' and s[1] == '0':
                             k += 1
                             m += 1
                         else:
@@ -53,4 +53,3 @@ def validUTF8(data):
             break
 
     return flag
-
