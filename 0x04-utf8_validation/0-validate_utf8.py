@@ -16,7 +16,7 @@ def validUTF8(data):
     flag = True
 
     if size == 0:
-        return False
+        return flag
     while i < size:
         if flag:
             s = bin(data[i])
@@ -42,6 +42,8 @@ def validUTF8(data):
                             m = counter
                             flag = False
                             break
+                    if m < counter - 1:
+                        return False
                 else:
                     flag = False
                     break
