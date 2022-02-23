@@ -12,8 +12,8 @@ def makeChange(coins, total):
     '''
     sum = 0
     count = 0
-    if (total < 0):
-        return -1
+    if (total <= 0):
+        return 0
     for i in range(0, len(coins)):
         val = max(coins)
         while (sum < total):
