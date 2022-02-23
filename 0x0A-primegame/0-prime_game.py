@@ -30,8 +30,9 @@ def isWinner(x, nums):
     resultdict = {'Maria': 0, 'Ben': 0}
     removed = []
     rmv = False
+    if (x < 1):
+        return None
     for round in nums:
-
         a_list = list(range(1, round + 1))
         currentPlayer = 'Maria'
         for val in a_list:
