@@ -33,16 +33,20 @@ def isWinner(x, nums):
     if (x < 1):
         return None
     for round in nums:
+        if(round == 0):
+            continue
         a_list = list(range(1, round + 1))
         currentPlayer = 'Maria'
         for val in a_list:
 
             rmv = False
-
+            if(val in removed):
+                continue
             if(isprime(val)):
                 for n in a_list:
-
-                    if (n % val == 0 and not(n in removed)):
+                    if(n in removed):
+                        continue
+                    if (n % val == 0):
 
                         removed.append(n)
                         rmv = True
