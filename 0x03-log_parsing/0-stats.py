@@ -2,6 +2,7 @@
 '''Python script to parse log and display stat'''
 import sys
 
+
 def print_message(codes, file_size):
     print("File size: {}".format(file_size))
     for key, val in sorted(codes.items()):
