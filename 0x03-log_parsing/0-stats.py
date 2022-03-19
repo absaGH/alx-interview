@@ -1,40 +1,46 @@
 #!/usr/bin/python3
 '''Python script to parse log and display stat'''
 import sys
-import re
-from collections import Counter
 
-if __name__ == "__main__":
-    flsz = 0
-    count = 0
-    lst = []
-    frq = {}
+def print_message(codes, file_size):
+    print("File size: {}".format(file_size))
+    for key, val in sorted(codes.items()):
+        if val != 0:
+            print("{}: {}".format(key, val))
 
-    def printstat():
-        '''function to printout the stats from the log'''
-        print('File size: ' + str(flsz))
-        frq = Counter(lst)
-        frq = sorted(frq.items())
-        frq = dict(frq)
-        for item in frq:
-            if int(item) in [200, 301, 400, 401, 403, 404, 405, 500]:
-                print(item + ': ' + str(frq[item]))
 
-    try:
-        for line in sys.stdin:
+file_size = 0
+code = 0
+count_lines = 0
+codes = {
+    "200": 0,
+    "301": 0,
+    "400": 0,
+    "401": 0,
+    "403": 0,
+    "404": 0,
+    "405": 0,
+    "500": 0
+}
 
-            line = line.strip()
-            pattern = r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})( - )\[\d{4}-\d{1,2}-\d{1,2} \d{1,2}:\d{1,2}:\d{1,2}.\d+\] ("\w+ \/\w+\/\d{1,3} \w+\/1.1") \d{3} \d+'
-            if re.search(pattern, line):
-                line = re.split(r'\s', line)
-                count = count + 1
-                flsz = flsz + int(line[-1])
-                lst.append(line[-2])
-                frq = Counter(lst)
-                if (count % 10 == 0):
-                    printstat()
-        if count % 10 != 0:
-            printstat()
-    except KeyboardInterrupt:
-        printstat()
-        raise
+try:
+    for line in sys.stdin:
+        ln = line.split()
+        ln = ln[::-1]
+
+        if len(ln) > 2:
+            count_lines += 1
+
+            if count_lines <= 10:
+                file_size += int(ln[0])
+                code = ln[1]
+
+                if (code in codes.keys()):
+                    codes[code] += 1
+
+            if (count_lines == 10):
+                print_message(codes, file_size)
+                count_lines = 0
+
+finally:
+    print_message(codes, file_size)
